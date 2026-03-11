@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ServiceModal from '../components/ServiceModal';
+import StripeHeroBackground from '../components/StripeHeroBackground';
 
 const Home = () => {
   const [serviceModal, setServiceModal] = useState({ isOpen: false, type: null });
@@ -114,6 +115,7 @@ const Home = () => {
     <>
       {/* HERO SECTION */}
       <section className="hero" id="home">
+        <StripeHeroBackground />
         <div className="hero-content">
           <h1 className="hero-heading">
             On-demand <span className="hero-highlight">talent</span>, on-point{' '}
