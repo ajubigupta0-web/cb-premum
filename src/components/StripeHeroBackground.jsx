@@ -8,12 +8,9 @@ export default function StripeHeroBackground() {
   useStripeParallax(ref, { strength: 10 });
 
   return (
-    <div className="stripe-bg" ref={ref} aria-hidden="true">
-      <div className="stripe-plane plane1"></div>
-      <div className="stripe-plane plane2"></div>
-      <div className="stripe-plane plane3"></div>
-      <div className="stripe-plane plane4"></div>
-      <div className="stripe-plane plane5"></div>
+    <div className="hero-burst-bg" ref={ref} aria-hidden="true">
+      <div className="hero-burst-rays" />
+      <div className="hero-burst-glow" />
     </div>
   );
 }

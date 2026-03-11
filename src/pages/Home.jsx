@@ -117,43 +117,48 @@ const Home = () => {
       <section className="hero" id="home">
         <StripeHeroBackground />
         <div className="hero-content">
-          <h1 className="hero-heading">
-            On-demand <span className="hero-highlight">talent</span>, on-point{' '}
-            <span className="hero-highlight">software solutions</span>
-          </h1>
-          <p className="hero-subtitle">
-            Connect with elite developers and build exceptional products. From staffing to full-scale development, we deliver the talent and expertise your business needs to thrive.
-          </p>
+          <div className="hero-inner">
+            <div className="hero-copy">
+              <h1 className="hero-heading">
+                On-demand <span className="hero-highlight">talent</span>, on-point{' '}
+                <span className="hero-highlight">software solutions</span>
+              </h1>
+              <p className="hero-subtitle">
+                Connect with elite developers and build exceptional products. From staffing to full-scale development, we deliver the talent and expertise your business needs to thrive.
+              </p>
 
-          {/* Stats Section */}
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <div className="hero-stat-number">796+</div>
-              <div className="hero-stat-label">Projects</div>
-            </div>
-            <div className="hero-stat">
-              <div className="hero-stat-number">119+</div>
-              <div className="hero-stat-label">Happy Customers</div>
-            </div>
-            <div className="hero-stat">
-              <div className="hero-stat-number">398+</div>
-              <div className="hero-stat-label">Consultants</div>
-            </div>
-          </div>
+              <a href="https://codersbrain.ai" target="_blank" rel="noopener noreferrer" className="btn-primary hero-cta">
+                Enroll Now
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
 
-          <a href="https://codersbrain.ai" target="_blank" rel="noopener noreferrer" className="btn-primary hero-cta">
-            Enroll Now
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
+              {/* Stats Section */}
+              <div className="hero-stats">
+                <div className="hero-stat">
+                  <div className="hero-stat-number">796+</div>
+                  <div className="hero-stat-label">Projects</div>
+                </div>
+                <div className="hero-stat">
+                  <div className="hero-stat-number">119+</div>
+                  <div className="hero-stat-label">Happy Customers</div>
+                </div>
+                <div className="hero-stat">
+                  <div className="hero-stat-number">398+</div>
+                  <div className="hero-stat-label">Consultants</div>
+                </div>
+              </div>
+            </div>
 
-          {/* Device Frame with Video */}
-          <div className="device-frame">
-            <div className="device-screen">
-              <video autoPlay muted loop playsInline className="device-video">
-                <source src="/video/hero.mp4" type="video/mp4" />
-              </video>
+            <div className="hero-right" aria-hidden="true">
+              <div className="device-frame">
+                <div className="device-screen">
+                  <video autoPlay muted loop playsInline className="device-video">
+                    <source src="/video/hero.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
             </div>
           </div>
         </div>
