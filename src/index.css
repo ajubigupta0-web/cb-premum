@@ -137,8 +137,7 @@ nav.scrolled {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: url('https://websitedemos.net/co-working-space-02/wp-content/uploads/sites/65/2020/07/hero-bg-01.jpg') center/cover;
-  background-position: center right;
+  background: linear-gradient(to bottom, #020617 0%, #0f172a 100%);
   color: white;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 150px), calc(100% - 150px) 100%, 0 100%);
   overflow: hidden;
@@ -146,77 +145,96 @@ nav.scrolled {
   max-width: 100vw;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
-
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 120px 48px 80px;
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  text-align: center;
   width: 100%;
-  padding-top: 120px;
 }
 
-.hero-text {
-  max-width: 600px;
-  text-align: left;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.hero-text h1 {
-  font-size: clamp(26px, 3.5vw, 44px);
+.hero-heading {
+  font-size: clamp(28px, 4vw, 48px);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.2;
   margin-bottom: 24px;
-  letter-spacing: -1px;
-  text-align: left;
+  letter-spacing: -0.5px;
+  max-width: 800px;
 }
 
-.hero-text p {
-  font-size: 14px;
+.hero-highlight {
+  color: var(--blue-primary);
+}
+
+.hero-subtitle {
+  font-size: 16px;
   line-height: 1.8;
-  margin-bottom: 32px;
+  margin-bottom: 48px;
   opacity: 0.95;
-  max-width: 540px;
-  text-align: left;
+  max-width: 600px;
 }
 
 .hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 32px;
-  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px;
+  margin-bottom: 40px;
 }
 
 .hero-stat {
-  text-align: left;
+  text-align: center;
 }
 
 .hero-stat-number {
-  font-size: clamp(20px, 2.5vw, 28px);
-  font-weight: 800;
+  font-size: clamp(24px, 2.5vw, 30px);
+  font-weight: 700;
   color: white;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   line-height: 1.2;
 }
 
 .hero-stat-label {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  color: rgba(156, 163, 175, 1);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
+}
+
+.hero-cta {
+  margin-bottom: 56px;
+}
+
+/* Device Frame (laptop/TV style) */
+.device-frame {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #0c1222;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.device-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+
+.device-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .btn-primary {
@@ -659,7 +677,48 @@ nav.scrolled {
 }
 
 .partners-marquee {
-  display: contents;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 48px;
+}
+
+@keyframes partners-scroll-ltr {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.partners-marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  width: max-content;
+  animation: partners-scroll-ltr 28s linear infinite;
+  will-change: transform;
+}
+
+.partners-marquee:hover .partners-marquee-content {
+  animation-play-state: paused;
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.partner-logo img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0);
+  opacity: 0.9;
 }
 
 .gallery-grid {
@@ -759,16 +818,43 @@ nav.scrolled {
   overflow-x: hidden;
 }
 
-.testimonials-slider {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
+@keyframes testimonials-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonials-marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
   margin-top: 48px;
 }
 
+.testimonials-marquee-content {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  animation: testimonials-scroll 30s linear infinite;
+  will-change: transform;
+}
+
+.testimonials-marquee:hover .testimonials-marquee-content {
+  animation-play-state: paused;
+}
+
 .testimonial-content {
-  max-width: 800px;
-  margin: 0 auto 48px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+  padding: 24px;
+  min-width: 350px;
+  max-width: 420px;
+  white-space: normal;
+  text-align: left;
 }
 
 .testimonial-text {
@@ -785,7 +871,7 @@ nav.scrolled {
 .testimonial-author {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
   width: 100%;
   max-width: 100%;
@@ -1266,7 +1352,6 @@ nav.scrolled {
     max-width: 100%;
   }
 
-  .hero-content,
   .about-container,
   .pricing-container,
   .impact-container {
@@ -1381,38 +1466,39 @@ nav.scrolled {
 
   .hero {
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 80px), calc(100% - 80px) 100%, 0 100%);
-    min-height: 50vh;
-    background-position: right center;
-    background-size: cover;
-  }
-
-  .hero-stats {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 16px;
-    margin-bottom: 28px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .hero-stats::-webkit-scrollbar {
-    display: none;
-  }
-
-  .hero-stat {
-    min-width: calc(33.333% - 11px);
-    scroll-snap-align: start;
-    flex-shrink: 0;
+    min-height: auto;
   }
 
   .hero-content {
-    padding: 0 24px;
-    padding-top: 80px;
-    align-items: flex-start;
-    justify-content: center;
+    padding: 80px 24px 60px;
     max-width: 100%;
     width: 100%;
+  }
+
+  .hero-stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .hero-heading {
+    font-size: clamp(24px, 5vw, 34px);
+    margin-bottom: 20px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    margin-bottom: 36px;
+  }
+
+  .hero-cta {
+    margin-bottom: 48px;
+  }
+
+  .device-frame {
+    padding: 10px;
   }
 
   .features-container,
@@ -1426,35 +1512,12 @@ nav.scrolled {
     padding-right: 24px;
   }
 
-  .hero-text {
-    max-width: 100%;
-  }
-
-  .hero-text h1 {
-    font-size: clamp(22px, 5vw, 34px);
-    margin-bottom: 20px;
-    line-height: 1.2;
-  }
-
-  .hero-text p {
-    font-size: 13px;
-    margin-bottom: 28px;
-    line-height: 1.7;
-  }
-
-  .hero-stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-
   .hero-stat-number {
-    font-size: clamp(18px, 3.5vw, 24px);
+    font-size: clamp(20px, 3.5vw, 26px);
   }
 
   .hero-stat-label {
-    font-size: 9px;
-    letter-spacing: 0.3px;
+    font-size: 11px;
   }
 
   .btn-primary {
@@ -1713,37 +1776,39 @@ nav.scrolled {
   }
 
   .hero {
-    min-height: 50vh;
+    min-height: auto;
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 60px), calc(100% - 60px) 100%, 0 100%);
-    background-position: right center;
-    background-size: cover;
-  }
-
-  .hero-stats {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 12px;
-    margin-bottom: 24px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .hero-stats::-webkit-scrollbar {
-    display: none;
-  }
-
-  .hero-stat {
-    min-width: calc(50% - 6px);
-    scroll-snap-align: start;
-    flex-shrink: 0;
   }
 
   .hero-content {
-    padding: 0 16px;
-    padding-top: 70px;
+    padding: 70px 16px 50px;
     max-width: 100%;
     width: 100%;
+  }
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .hero-cta {
+    margin-bottom: 40px;
+  }
+
+  .device-frame {
+    padding: 8px;
+  }
+
+  .testimonials-marquee-content {
+    gap: 16px;
+    animation-duration: 24s;
+  }
+
+  .testimonial-content {
+    min-width: 260px;
+    max-width: 280px;
+    padding: 18px;
   }
 
   .features-container,
@@ -1767,27 +1832,22 @@ nav.scrolled {
     height: auto;
   }
 
-  .hero-text h1 {
+  .hero-heading {
     font-size: 22px;
     margin-bottom: 16px;
   }
 
-  .hero-text p {
+  .hero-subtitle {
     font-size: 13px;
-    margin-bottom: 24px;
-  }
-
-  .hero-stats {
-    gap: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
 
   .hero-stat-number {
-    font-size: 16px;
+    font-size: 22px;
   }
 
   .hero-stat-label {
-    font-size: 8px;
+    font-size: 10px;
   }
 
   .btn-primary {
@@ -1851,24 +1911,20 @@ nav.scrolled {
   }
 
   .partners-marquee {
-    display: flex !important;
-    animation: marquee 40s linear infinite;
+    margin-top: 32px;
+  }
+
+  .partners-marquee-content {
     gap: 32px;
-    width: max-content;
+    animation-duration: 26s;
   }
 
-  .partners-marquee > div {
-    flex-shrink: 0;
-    width: 150px;
+  .partner-logo {
+    height: 56px;
   }
 
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+  .partner-logo img {
+    height: 36px;
   }
 
   /* Slider for Features Section on Mobile */
@@ -1893,45 +1949,19 @@ nav.scrolled {
   }
 
   /* Slider for Testimonials Section on Mobile */
-  .testimonials-slider {
-    display: flex !important;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 0;
+  .testimonials-marquee {
     margin-top: 32px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 10px;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
   }
 
-  .testimonials-slider::-webkit-scrollbar {
-    display: none;
+  .testimonials-marquee-content {
+    gap: 20px;
+    animation-duration: 26s;
   }
 
-  .testimonials-slider > .testimonial-content {
-    min-width: 100%;
-    max-width: 100%;
-    width: 100%;
-    scroll-snap-align: start;
-    flex-shrink: 0;
-    margin: 0;
-    padding: 0 16px;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-
-  .testimonials-slider > .testimonial-content:first-child {
-    margin-left: 0;
-  }
-
-  .testimonials-slider > .testimonial-content:last-child {
-    margin-right: 0;
-    padding-right: 16px;
+  .testimonial-content {
+    min-width: 300px;
+    max-width: 320px;
+    padding: 20px;
   }
 
   /* Slider Dots - Mobile Only */

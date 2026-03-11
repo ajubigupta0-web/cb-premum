@@ -5,12 +5,9 @@ import ServiceModal from '../components/ServiceModal';
 const Home = () => {
   const [serviceModal, setServiceModal] = useState({ isOpen: false, type: null });
   const [featuresSlide, setFeaturesSlide] = useState(0);
-  const [testimonialsSlide, setTestimonialsSlide] = useState(0);
   const featuresRef = useRef(null);
-  const testimonialsRef = useRef(null);
 
   const featuresCount = 6;
-  const testimonialsCount = 6;
 
   const showServiceDetail = (serviceType) => {
     setServiceModal({ isOpen: true, type: serviceType });
@@ -30,73 +27,132 @@ const Home = () => {
       }
     };
 
-    const handleTestimonialsScroll = () => {
-      if (testimonialsRef.current) {
-        const scrollLeft = testimonialsRef.current.scrollLeft;
-        const cardWidth = testimonialsRef.current.offsetWidth - 32; // Account for gap
-        const currentSlide = Math.round(scrollLeft / cardWidth);
-        setTestimonialsSlide(currentSlide);
-      }
-    };
-
     const featuresEl = featuresRef.current;
-    const testimonialsEl = testimonialsRef.current;
 
     if (featuresEl) {
       featuresEl.addEventListener('scroll', handleFeaturesScroll);
-    }
-    if (testimonialsEl) {
-      testimonialsEl.addEventListener('scroll', handleTestimonialsScroll);
     }
 
     return () => {
       if (featuresEl) {
         featuresEl.removeEventListener('scroll', handleFeaturesScroll);
       }
-      if (testimonialsEl) {
-        testimonialsEl.removeEventListener('scroll', handleTestimonialsScroll);
-      }
     };
   }, []);
+
+  const testimonials = [
+    {
+      text: '"The work that CodersBrain has been doing is tremendous. They are experts at conducting the proper searches and identifying the best candidates."',
+      name: 'Manjunath GM',
+      role: 'Talent Acquisition Leader - AVP, Hex',
+      avatar: 'https://i.pravatar.cc/150?img=12',
+    },
+    {
+      text: '"CodersBrain has been instrumental in helping us scale our engineering team. Their candidates are top-notch and the recruitment process is incredibly smooth."',
+      name: 'Sarah Johnson',
+      role: 'CTO, TechStart Inc.',
+      avatar: 'https://i.pravatar.cc/150?img=33',
+    },
+    {
+      text: `"We've worked with CodersBrain for over 2 years now. Their IT consulting services helped us reduce costs by 70% while improving our infrastructure significantly."`,
+      name: 'Rajesh Kumar',
+      role: 'VP of Technology, Global Solutions',
+      avatar: 'https://i.pravatar.cc/150?img=47',
+    },
+    {
+      text: '"The software development team from CodersBrain integrated seamlessly with our existing team. They delivered our project on time and exceeded our expectations."',
+      name: 'Emily Chen',
+      role: 'Product Manager, Innovate Labs',
+      avatar: 'https://i.pravatar.cc/150?img=51',
+    },
+    {
+      text: `"CodersBrain's staff augmentation services have been a game-changer for us. We were able to quickly scale our team without the hassle of traditional hiring."`,
+      name: 'Michael Brown',
+      role: 'Engineering Director, CloudFirst',
+      avatar: 'https://i.pravatar.cc/150?img=68',
+    },
+    {
+      text: '"IIT-backed excellence truly shows in their work. The quality of developers we\'ve hired through CodersBrain is exceptional. Highly recommended!"',
+      name: 'Priya Sharma',
+      role: 'Head of Engineering, DataViz',
+      avatar: 'https://i.pravatar.cc/150?img=27',
+    },
+  ];
+
+  const partners = [
+    { name: 'Google', src: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg' },
+    { name: 'Microsoft', src: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg' },
+    { name: 'IBM', src: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
+    { name: 'SAP', src: 'https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg' },
+    { name: 'Cisco', src: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg' },
+    { name: 'Intel', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg' },
+    { name: 'Salesforce', src: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg' },
+    { name: 'Adobe', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Adobe_Systems_logo_and_wordmark.svg' },
+    { name: 'Amazon', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
+    { name: 'Apple', src: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
+    { name: 'Meta', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg' },
+    { name: 'NVIDIA', src: 'https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg' },
+    { name: 'GitHub', src: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg' },
+    { name: 'Infosys', src: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg' },
+    { name: 'Google', src: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg' },
+    { name: 'Microsoft', src: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg' },
+    { name: 'IBM', src: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
+    { name: 'SAP', src: 'https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg' },
+    { name: 'Cisco', src: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg' },
+    { name: 'Intel', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg' },
+    { name: 'Salesforce', src: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg' },
+    { name: 'Adobe', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Adobe_Systems_logo_and_wordmark.svg' },
+    { name: 'Amazon', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
+    { name: 'Apple', src: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
+    { name: 'Meta', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg' },
+    { name: 'NVIDIA', src: 'https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg' },
+    { name: 'GitHub', src: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg' },
+    { name: 'Infosys', src: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg' },
+  ];
 
   return (
     <>
       {/* HERO SECTION */}
       <section className="hero" id="home">
-        <div className="hero-overlay"></div>
         <div className="hero-content">
-          <div className="hero-text">
-            <h1>
-              On-demand <span style={{ color: 'var(--blue-primary)' }}>talent</span>
-              <br />
-              on-point <span style={{ color: 'var(--blue-primary)' }}>software solutions</span>
-            </h1>
-            <p>
-              Connect with elite developers and build exceptional products. From staffing to full-scale development, we deliver the talent and expertise your business needs to thrive.
-            </p>
-            
-            {/* Stats Section */}
-            <div className="hero-stats">
-              <div className="hero-stat">
-                <div className="hero-stat-number">796+</div>
-                <div className="hero-stat-label">Projects</div>
-              </div>
-              <div className="hero-stat">
-                <div className="hero-stat-number">119+</div>
-                <div className="hero-stat-label">Happy Customers</div>
-              </div>
-              <div className="hero-stat">
-                <div className="hero-stat-number">398+</div>
-                <div className="hero-stat-label">Consultants</div>
-              </div>
-            </div>
+          <h1 className="hero-heading">
+            On-demand <span className="hero-highlight">talent</span>, on-point{' '}
+            <span className="hero-highlight">software solutions</span>
+          </h1>
+          <p className="hero-subtitle">
+            Connect with elite developers and build exceptional products. From staffing to full-scale development, we deliver the talent and expertise your business needs to thrive.
+          </p>
 
-            <a href="https://codersbrain.ai" target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Enroll Now
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
+          {/* Stats Section */}
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <div className="hero-stat-number">796+</div>
+              <div className="hero-stat-label">Projects</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-number">119+</div>
+              <div className="hero-stat-label">Happy Customers</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat-number">398+</div>
+              <div className="hero-stat-label">Consultants</div>
+            </div>
+          </div>
+
+          <a href="https://codersbrain.ai" target="_blank" rel="noopener noreferrer" className="btn-primary hero-cta">
+            Enroll Now
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+
+          {/* Device Frame with Video */}
+          <div className="device-frame">
+            <div className="device-screen">
+              <video autoPlay muted loop playsInline className="device-video">
+                <source src="/video/hero.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
       </section>
@@ -351,78 +407,13 @@ const Home = () => {
             <h2>Our Partners</h2>
             <p>Trusted by leading enterprises and fast-growing companies across industries.</p>
           </div>
-          <div className="partners-grid">
-            <div className="partners-marquee">
-              {[
-                { name: 'Google', src: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg' },
-                { name: 'Microsoft', src: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg' },
-                { name: 'IBM', src: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
-                { name: 'SAP', src: 'https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg' },
-                { name: 'Cisco', src: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg' },
-                { name: 'Intel', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg' },
-                { name: 'Salesforce', src: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg' },
-                { name: 'Adobe', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Adobe_Systems_logo_and_wordmark.svg' },
-                { name: 'Amazon', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
-                { name: 'Apple', src: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
-                { name: 'Meta', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg' },
-                { name: 'NVIDIA', src: 'https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg' },
-                { name: 'GitHub', src: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg' },
-                { name: 'Infosys', src: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg' }
-              ].concat([
-                { name: 'Google', src: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg' },
-                { name: 'Microsoft', src: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg' },
-                { name: 'IBM', src: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
-                { name: 'SAP', src: 'https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg' },
-                { name: 'Cisco', src: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg' },
-                { name: 'Intel', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg' },
-                { name: 'Salesforce', src: 'https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg' },
-                { name: 'Adobe', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Adobe_Systems_logo_and_wordmark.svg' },
-                { name: 'Amazon', src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
-                { name: 'Apple', src: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' },
-                { name: 'Meta', src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg' },
-                { name: 'NVIDIA', src: 'https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg' },
-                { name: 'GitHub', src: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg' },
-                { name: 'Infosys', src: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg' }
-              ]).map((company, index) => (
-              <div 
-                key={index}
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  padding: '20px',
-                  background: 'white',
-                  borderRadius: 'var(--radius)',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                  height: '120px',
-                  transition: 'all 0.3s'
-                }}
-              >
-                <img 
-                  src={company.src} 
-                  alt={company.name} 
-                  style={{ 
-                    maxWidth: '100%', 
-                    maxHeight: '80px', 
-                    width: 'auto', 
-                    height: 'auto',
-                    objectFit: 'contain',
-                    filter: 'grayscale(100%) opacity(0.85)',
-                    transition: 'all 0.3s'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.filter = 'grayscale(0%) opacity(1)';
-                    e.target.parentElement.style.transform = 'translateY(-4px)';
-                    e.target.parentElement.style.boxShadow = '0 8px 30px rgba(0,0,0,0.12)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.filter = 'grayscale(100%) opacity(0.85)';
-                    e.target.parentElement.style.transform = 'translateY(0)';
-                    e.target.parentElement.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
-                  }}
-                />
-              </div>
-            ))}
+          <div className="partners-marquee" aria-label="Partners logos marquee">
+            <div className="partners-marquee-content">
+              {[...partners, ...partners].map((company, index) => (
+                <div className="partner-logo" key={`${company.name}-${index}`}>
+                  <img src={company.src} alt={company.name} loading="lazy" />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -435,98 +426,21 @@ const Home = () => {
             <h2>Happy Clients Say</h2>
             <p>Hear from our satisfied clients about their experience working with CodersBrain</p>
           </div>
-          <div className="testimonials-slider" ref={testimonialsRef}>
-            <div className="testimonial-content">
-              <p className="testimonial-text">
-                "The work that CodersBrain has been doing is tremendous. They are experts at conducting the proper searches and identifying the best candidates."
-              </p>
-              <div className="testimonial-author">
-                <img src="https://i.pravatar.cc/150?img=12" alt="Manjunath GM" className="testimonial-avatar" />
-                <div className="testimonial-info">
-                  <h4>Manjunath GM</h4>
-                  <p>Talent Acquisition Leader - AVP, Hex</p>
+          <div className="testimonials-marquee" aria-label="Client testimonials marquee">
+            <div className="testimonials-marquee-content">
+              {[...testimonials, ...testimonials].map((t, idx) => (
+                <div className="testimonial-content" key={`${t.name}-${idx}`}>
+                  <p className="testimonial-text">{t.text}</p>
+                  <div className="testimonial-author">
+                    <img src={t.avatar} alt={t.name} className="testimonial-avatar" />
+                    <div className="testimonial-info">
+                      <h4>{t.name}</h4>
+                      <p>{t.role}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-            <div className="testimonial-content">
-              <p className="testimonial-text">
-                "CodersBrain has been instrumental in helping us scale our engineering team. Their candidates are top-notch and the recruitment process is incredibly smooth."
-              </p>
-              <div className="testimonial-author">
-                <img src="https://i.pravatar.cc/150?img=33" alt="Sarah Johnson" className="testimonial-avatar" />
-                <div className="testimonial-info">
-                  <h4>Sarah Johnson</h4>
-                  <p>CTO, TechStart Inc.</p>
-                </div>
-              </div>
-            </div>
-            <div className="testimonial-content">
-              <p className="testimonial-text">
-                "We've worked with CodersBrain for over 2 years now. Their IT consulting services helped us reduce costs by 70% while improving our infrastructure significantly."
-              </p>
-              <div className="testimonial-author">
-                <img src="https://i.pravatar.cc/150?img=47" alt="Rajesh Kumar" className="testimonial-avatar" />
-                <div className="testimonial-info">
-                  <h4>Rajesh Kumar</h4>
-                  <p>VP of Technology, Global Solutions</p>
-                </div>
-              </div>
-            </div>
-            <div className="testimonial-content">
-              <p className="testimonial-text">
-                "The software development team from CodersBrain integrated seamlessly with our existing team. They delivered our project on time and exceeded our expectations."
-              </p>
-              <div className="testimonial-author">
-                <img src="https://i.pravatar.cc/150?img=51" alt="Emily Chen" className="testimonial-avatar" />
-                <div className="testimonial-info">
-                  <h4>Emily Chen</h4>
-                  <p>Product Manager, Innovate Labs</p>
-                </div>
-              </div>
-            </div>
-            <div className="testimonial-content">
-              <p className="testimonial-text">
-                "CodersBrain's staff augmentation services have been a game-changer for us. We were able to quickly scale our team without the hassle of traditional hiring."
-              </p>
-              <div className="testimonial-author">
-                <img src="https://i.pravatar.cc/150?img=68" alt="Michael Brown" className="testimonial-avatar" />
-                <div className="testimonial-info">
-                  <h4>Michael Brown</h4>
-                  <p>Engineering Director, CloudFirst</p>
-                </div>
-              </div>
-            </div>
-            <div className="testimonial-content">
-              <p className="testimonial-text">
-                "IIT-backed excellence truly shows in their work. The quality of developers we've hired through CodersBrain is exceptional. Highly recommended!"
-              </p>
-              <div className="testimonial-author">
-                <img src="https://i.pravatar.cc/150?img=27" alt="Priya Sharma" className="testimonial-avatar" />
-                <div className="testimonial-info">
-                  <h4>Priya Sharma</h4>
-                  <p>Head of Engineering, DataViz</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Testimonials Slider Dots - Mobile Only */}
-          <div className="slider-dots testimonials-dots">
-            {Array.from({ length: testimonialsCount }).map((_, index) => (
-              <button
-                key={index}
-                className={`slider-dot ${index === testimonialsSlide ? 'active' : ''}`}
-                onClick={() => {
-                  if (testimonialsRef.current) {
-                    const cardWidth = testimonialsRef.current.offsetWidth - 32;
-                    testimonialsRef.current.scrollTo({
-                      left: index * cardWidth,
-                      behavior: 'smooth'
-                    });
-                  }
-                }}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
           </div>
         </div>
       </section>
