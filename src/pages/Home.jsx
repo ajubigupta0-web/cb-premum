@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ServiceModal from '../components/ServiceModal';
-import StripeHeroBackground from '../components/StripeHeroBackground';
 
 const Home = () => {
   const [serviceModal, setServiceModal] = useState({ isOpen: false, type: null });
@@ -114,9 +113,8 @@ const Home = () => {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="hero" id="home">
-        <StripeHeroBackground />
-        <div className="hero-content">
+      <section className="hero relative overflow-hidden" id="home">
+        <div className="hero-content relative z-10">
           <div className="hero-inner">
             <div className="hero-copy">
               <h1 className="hero-heading">

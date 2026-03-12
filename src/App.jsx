@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
+import CustomCursor from './components/CustomCursor';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -49,6 +50,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <CustomCursor />
         <ScrollToTop />
         <Header />
         <Routes>
